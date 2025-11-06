@@ -1,15 +1,17 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
-from relationship_app.models import Book, Library
+from django.shortcuts import render
+from .models import Book, Library
+from django.views.generic import DetailView
 
-# ✅ Use ListView instead of function-based view
-class BookListView(ListView):
-    model = Book
-    template_name = 'relationship_app/list_books.html'
-    context_object_name = 'books'  # The variable used in the template
+# Function-based View to list all books
+def list_books(request):
+    # Query all book objects from the database
+    books = Book.objects.all()
 
-# ✅ DetailView remains correct
+    # Render the 'list_books.html' template and pass the books in context
+    return render(request, 'relationship_app/list_books.html', {'books': books})
+
+# Class-based View to show library details
 class LibraryDetailView(DetailView):
-    model = Library
-    template_name = 'relationship_app/library_detail.html'
-    context_object_name = 'library'
+    model = Library                      # Tell Django this view works with the Library model
+    template_name = 'relationship_app/library_detail.html'   # Template to display
+    context_object_name = 'library'      # Name of the object in the template
