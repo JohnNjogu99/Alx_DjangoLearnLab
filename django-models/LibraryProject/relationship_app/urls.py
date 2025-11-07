@@ -6,6 +6,8 @@ from relationship_app.views import admin_view, librarian_view, member_view
 from relationship_app.views import add_book, edit_book, delete_book
 
 urlpatterns = [
+    path('list_books/', list_books, name='list_books'),  # ✅ Function-based view
+    path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),  # ✅ Class-based view
     path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
     path('register/', views.register, name='register'),
     path('admin-view/', admin_view, name='admin_view'),  # ✅ Admin route
