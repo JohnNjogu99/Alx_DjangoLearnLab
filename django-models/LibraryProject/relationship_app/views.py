@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import user_passes_test
 from .models import UserProfile
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, get_object_or_404, redirect
+from relationship_app.models import Book
+from django.http import HttpResponse
 
 def register(request):
     if request.method == 'POST':
@@ -36,3 +40,18 @@ def librarian_view(request):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
+@permission_required('relationship_app.can_add_book')
+def add_book(request):
+    # Dummy implementation for demonstration
+    return HttpResponse("Add Book View - Permission Granted")
+
+@permission_required('relationship_app.can_change_book')
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return HttpResponse(f"Edit Book View - Editing {book.title}")
+
+@permission_required('relationship_app.can_delete_book')
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return HttpResponse(f"Delete Book View - Deleting {book.title}")
