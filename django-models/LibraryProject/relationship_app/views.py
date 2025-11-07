@@ -8,9 +8,9 @@ from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from relationship_app.models import Book
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
 from relationship_app.models import Book, Library
+from .models import Library
 
 def list_books(request):
     books = Book.objects.all()  # ✅ Matches checker requirement
