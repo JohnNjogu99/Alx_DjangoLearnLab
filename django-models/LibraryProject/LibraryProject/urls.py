@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import path, include  # include is required!
+from django.contrib.auth import views as auth_views  # ✅ This line is missing
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('relationship_app.urls')),  # Include URLs from relationship_app
+    path('login/', auth_views.LoginView.as_view(), name='login'),
 ]
