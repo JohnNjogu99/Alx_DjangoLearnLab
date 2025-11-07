@@ -26,7 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('relationship_app.urls')),  # Include URLs from relationship_app
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('books/add/', add_book, name='add_book'),  # ✅ Add book
-    path('books/edit/<int:book_id>/', edit_book, name='edit_book'),  # ✅ Edit book
-    path('books/delete/<int:book_id>/', delete_book, name='delete_book'),  # ✅ Delete book
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'), 
+       
 ]
