@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+    <title>Library Detail</title> <!-- Page title shown in browser tab -->
+</head>
+<body>
+    <h1>Library: {{ library.name }}</h1> <!-- Display the library's name -->
+    <h2>Books in Library:</h2> <!-- Subheading for book list -->
+    <ul>
+        {% for book in library.books.all %} <!-- Loop through all books in the library -->
+        <li>{{ book.title }} by {{ book.author.name }} (Published {{ book.publication_year }})</li>
+        <!-- Show book title, author name, and publication year -->
+        {% endfor %}
+    </ul>
+</body>
+</html>

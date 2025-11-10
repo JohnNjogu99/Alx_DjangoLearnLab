@@ -1,0 +1,16 @@
+<!-- list_books.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+    <title>List of Books</title> <!-- Page title shown in browser tab -->
+</head>
+<body>
+    <h1>Books Available:</h1> <!-- Main heading -->
+    <ul>
+        {% for book in books %} <!-- Loop through each book passed from the view -->
+        <li>{{ book.title }} by {{ book.author.name }}</li> <!-- Display book title and author name -->
+        {% endfor %}
+    </ul>
+</body>
+</html>
