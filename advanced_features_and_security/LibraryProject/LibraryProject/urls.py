@@ -26,6 +26,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('relationship_app.urls')),  # Include URLs from relationship_app
+    path('bookshelf/', include('bookshelf.urls')),  # include bookshelf URLs
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'), 
        

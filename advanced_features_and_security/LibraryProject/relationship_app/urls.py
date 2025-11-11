@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from . import views
 from django.urls import path, include
 from .views import list_books
+from bookshelf.views import LibraryDetailView
 from relationship_app.views import admin_view, librarian_view, member_view
 from relationship_app.views import add_book, edit_book, delete_book
 
