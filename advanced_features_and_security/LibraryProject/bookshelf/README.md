@@ -1,3 +1,21 @@
+# Security Review
+
+## Measures Implemented
+- Enforced HTTPS with `SECURE_SSL_REDIRECT` and HSTS headers
+- Secured cookies with `SESSION_COOKIE_SECURE` and `CSRF_COOKIE_SECURE`
+- Hardened headers against clickjacking, MIME sniffing, and XSS
+- Configured Content Security Policy via `django-csp`
+- All forms include `{% csrf_token %}` for CSRF protection
+- Views use Django ORM and forms to prevent SQL injection
+
+## Contribution to Security
+These measures ensure that all data is transmitted securely, user input is validated, and browser-based attacks are mitigated. They align with OWASP best practices and Django’s security checklist.
+
+## Areas for Improvement
+- Add automated security tests (e.g., OWASP ZAP or Bandit)
+- Set up HTTPS locally for full simulation
+- Monitor headers and cookies in production using browser dev tools
+
 # Nginx HTTPS Configuration (for production deployment)
 
 server {
