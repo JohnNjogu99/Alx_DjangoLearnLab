@@ -10,6 +10,15 @@
     <input type="text" name="title" placeholder="Search by title">
     <button type="submit">Search</button>
   </form>
+<h1>Book List</h1>
+<ul>
+  {% for book in books %}
+    <li>{{ book.title|escape }} by {{ book.author|escape }}</li>
+  {% empty %}
+    <li>No books found.</li>
+  {% endfor %}
+</ul>
+
 
   <!-- ✅ Display books securely -->
   <ul>
