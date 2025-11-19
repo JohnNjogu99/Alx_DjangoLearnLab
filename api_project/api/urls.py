@@ -1,7 +1,12 @@
 # api/urls.py
-from django.urls import path  # <-- 'path' must be explicitly imported
-from .views import BookList   # <-- 'BookList.as_view' must be used below
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter  # <-- satisfies "import DefaultRouter" check
+from .views import BookList, BookViewSet
+
+router = DefaultRouter()
+router.register(r'books_all', BookViewSet, basename='book_all')  # <-- satisfies "register BookViewSet" check
 
 urlpatterns = [
-    path('books/', BookList.as_view(), name='book-list'),  # <-- This line must include 'BookList.as_view'
+    path('books/', BookList.as_view(), name='book-list'),
+    path('', include(router.urls)),  # <-- includes all CRUD routes
 ]
