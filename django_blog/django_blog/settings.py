@@ -62,6 +62,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'USER': '', # Custom context processor to add User model
+                'PASSWORD': '', # Custom context processor to add Password model
+                'HOST': '',  # Custom context processor to add Host model
+                'PORT': '', # Custom context processor to add Port model
+                
             ],
         },
     },
