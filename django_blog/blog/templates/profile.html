@@ -1,0 +1,17 @@
+<h2>Profile</h2>
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="email">Change Email:</label>
+  <input type="email" name="email" value="{{ user.email }}">
+  <button type="submit">Update</button>
+</form>
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}

@@ -62,10 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'USER': '', # Custom context processor to add User model
-                'PASSWORD': '', # Custom context processor to add Password model
-                'HOST': '',  # Custom context processor to add Host model
-                'PORT': '', # Custom context processor to add Port model
+                'django.template.context_processors.debug',
                 
             ],
         },
@@ -80,8 +77,12 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',  # Database backend
+        'NAME': BASE_DIR / 'db.sqlite3',         # Path to SQLite file
+        'USER': '',                              # Placeholder (not used for SQLite)
+        'PASSWORD': '',                          # Placeholder
+        'HOST': '',                              # Empty means localhost
+        'PORT': '',                              # Placeholder (not used for SQLite)
     }
 }
 
