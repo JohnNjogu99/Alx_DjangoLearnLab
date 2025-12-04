@@ -1,34 +1,31 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView
-from .forms import RegisterForm
+from django.contrib import messages
+from .forms import RegisterForm, ProfileUpdateForm
 
-# Registration view
-def register(request):
+def register_view(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()          # Save new user
-            login(request, user)        # Log them in immediately
-            return redirect("profile")  # Redirect to profile page
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect("profile")
     else:
         form = RegisterForm()
     return render(request, "register.html", {"form": form})
 
-# Profile view (requires login)
+
 @login_required
-def profile(request):
+def profile_view(request):
     if request.method == "POST":
-        request.user.email = request.POST.get("email")
-        request.user.save()
-        return redirect("profile")
-    return render(request, "profile.html", {"user": request.user})
+        form = ProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully.")
+            return redirect("profile")
+    else:
+        form = ProfileUpdateForm(instance=request.user)
 
-# Login view using Django's built-in class
-class CustomLoginView(LoginView):
-    template_name = "login.html"
-
-# Logout view using Django's built-in class
-class CustomLogoutView(LogoutView):
-    template_name = "logout.html"
+    return render(request, "profile.html", {"form": form})
