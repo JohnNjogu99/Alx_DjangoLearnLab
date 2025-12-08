@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%qtf+^%o$3-nco&&+kpp1*ufdltm(qzfoyp(7@@arb%u_()4qe'
+SECRET_KEY = 'django-insecure-)xcz74-43g0_%a^%24s3p9an_h(&f6swaicq2x!2*31wezb7@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -62,8 +62,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.debug',
-                
             ],
         },
     },
@@ -77,12 +75,8 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Database backend
-        'NAME': BASE_DIR / 'db.sqlite3',         # Path to SQLite file
-        'USER': '',                              # Placeholder (not used for SQLite)
-        'PASSWORD': '',                          # Placeholder
-        'HOST': '',                              # Empty means localhost
-        'PORT': '',                              # Placeholder (not used for SQLite)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -121,13 +115,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-
-LOGIN_REDIRECT_URL = "profile"
-LOGOUT_REDIRECT_URL = "login"
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'blog/static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
