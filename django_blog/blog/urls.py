@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns = [
     # login/logout handled by Django built-in views (templates under registration/)
-    path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    #path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path("login/", auth_views.LoginView.as_view(template_name="blog/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(template_name="registration/logged_out.html"), name="logout"),
 
     # custom register & profile
