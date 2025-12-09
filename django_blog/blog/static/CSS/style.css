@@ -1,14 +1,8 @@
-body {
-font-family: Arial, sans-serif;
-background-color: #f4f4f4;
-margin: 0;
-padding: 0;
-}
-
-
-header {
-background: #333;
-color: white;
-padding: 10px;
-text-align: center;
-}
+/* blog/static/css/style.css */
+body { font-family: Arial, sans-serif; background:#f7f7f7; margin:0; padding:0; }
+header { background:#333; color:white; padding:0.6rem; }
+header nav a { color:white; margin-right:1rem; text-decoration:none; }
+.messages { list-style: none; padding: 0.5rem; }
+.messages li.success { color: green; }
+.messages li.error { color: red; }
+.post { background:white; margin:1rem; padding:1rem; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
